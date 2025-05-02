@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giga</title>
+
+    <link rel="stylesheet" href="/static/styles/main.css">
+    <link rel="stylesheet" href="/static/styles/navbar.css">
+    <link rel="stylesheet" href="/static/styles/contacts.css">
+    <link rel="stylesheet" href="/static/styles/product3.css">
+    <link rel="stylesheet" href="/static/styles/filter2.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#">Logo</a>
+            </div>
+            <input type="checkbox" id="sidebar-active">
+            <div class="blur"></div>
+            <label for="sidebar-active" class="open-sidebar-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32">
+                    <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                </svg>
+            </label>
+            <div class="links-container">
+                <label for="sidebar-active" class="close-sidebar-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32">
+                        <path
+                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                    </svg>
+                </label>
+                <a class="link" href="https://example.com">Главная страница.</a>
+                <a class="link" href="https://example.com">Контакты</a>
+                <a class="link" href="https://example.com">О нас</a>
+            </div>
+        </nav>
+
+    </header>
+    <section>
+        <div class="filter-container">
+            <h1>Фильтр товаров</h1>
+
+            
+
+            <!-- Фильтр по сезону -->
+            <div class="parameters">
+            <!-- Поле для фильтрации по цене -->
+                <div class="filter-group">
+                    <div class="price-filter">
+                        <div class="price-header">
+                            <span>Фильтр цен</span>
+                            <span>₽</span>
+                        </div>
+                
+                        <div class="price-inputs">
+                            <div class="price-input">
+                                <input type="number" id="input-min" value="{{.MinPrice}}" min="{{.MinPrice}}" max="{{.MaxPrice}}">
+                            </div>
+                            <div class="price-input">
+                                <input type="number" id="input-max" value="{{.MaxPrice}}" min="{{.MinPrice}}" max="{{.MaxPrice}}">
+                            </div>
+                        </div>
+                
+                        <div class="range-slider">
+                            <div class="track" id="track"></div>
+                            <input type="range" min="{{.MinPrice}}" max="{{.MaxPrice}}" value="{{.MinPrice}}" id="lower">
+                            <input type="range" min="{{.MinPrice}}" max="{{.MaxPrice}}" value="{{.MaxPrice}}" id="upper">
+                        </div>
+                
+                        <div class="price-limits">
+                            <span>{{.MinPrice}} ₽</span>
+                            <span>{{.MaxPrice}} ₽</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="row">
+                        <div class="filter-group">
+                            <label>Ширина:</label>
+                            <select class="filter" id="width-filter">
+                                <option value="all">Все</option>
+                                <option value="winter">135</option>
+                                <option value="summer">145</option>
+                                <option value="summer">155</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Профиль:</label>
+                            <select class="filter" id="profile-filter">
+                                <option value="all">Все</option>
+                                <option value="winter">25</option>
+                                <option value="summer">30</option>
+                                <option value="summer">35</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Диаметр:</label>
+                            <select class="filter" id="profile-filter">
+                                <option value="all">Все</option>
+                                <option value="winter">12</option>
+                                <option value="summer">13</option>
+                                <option value="summer">14</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="filter-group">
+                            <label>Сезон:</label>
+                            <select class="filter" id="season-filter">
+                                <option value="all">Все</option>
+                                <option value="winter">Зима</option>
+                                <option value="summer">Лето</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Кнопка применения фильтра -->
+            <div><button id="apply-filter">Применить</button></div>
+        </div>
+
+        <!-- Контейнер для товаров -->
+        <div class="products-container" id="products-list">
+            {{range .Products}}
+            <div class="product-card" data-cost="{{.Cost}}" data-season="{{.Season}}">
+                <div class="img">
+                    <img src="{{.Image}}" alt="{{.Name}}">
+                </div>
+                <p>{{.Name}}</p>
+                <p>Сезон: {{.Seasontr}}</p>
+                <p class="price-product">{{.Cost}} ₽/шт</p>
+            </div>
+            {{end}}
+        </div>
+    </section>
+</body>
+<script src="/static/scripts/main.js"></script>
+<script src="/static/scripts/filtersuper.js"></script>
+</html>

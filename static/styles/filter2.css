@@ -1,0 +1,108 @@
+.price-filter {
+    font-family: Arial, sans-serif;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #454545;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.price-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.price-inputs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.price-input {
+    flex: 1;
+    position: relative;
+}
+
+.price-input input {
+    width: 100%;
+    padding: 10px 10px 10px 30px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.price-input::before {
+    content: "от";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+}
+
+.price-input:last-child::before {
+    content: "до";
+}
+
+.range-slider {
+    position: relative;
+    height: 6px;
+    background-color: #575757;
+    border-radius: 3px;
+    margin: 30px 0;
+}
+
+.range-slider .track {
+    position: absolute;
+    height: 100%;
+    background-color: #4a90e2;
+    border-radius: 3px;
+    left: 0;
+    right: 0;
+}
+
+.range-slider input[type="range"] {
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+    appearance: none;
+    top: 0;
+    margin: 0;
+}
+
+.range-slider input[type="range"]::-webkit-slider-thumb {
+    pointer-events: all;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4a90e2;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s;
+}
+
+.range-slider input[type="range"]::-webkit-slider-thumb:active {
+    transform: scale(1.2);
+}
+
+.price-limits {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: -15px;
+}
+.price-filter {
+    margin-left: 0;
+    margin-right: auto;
+}

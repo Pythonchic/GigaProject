@@ -1,0 +1,27 @@
+.cards {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin: 10px;
+    border-radius: 11px;
+    border: 3px solid #000;
+    background-color: #575757;
+    color: white;
+}
+
+.card-body {
+    border-top: 3px solid #000;
+}
+
+.card-img-top {
+    height: 190px;
+    width: 190px;
+}
+
+.list-group>li {
+    background-color: #575757;
+    color: white;
+}

@@ -1,0 +1,191 @@
+/* contacts buttons */
+.contacts {
+    display: flex;
+    visibility: hidden;
+    z-index: 3;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+/* call button */
+
+.call-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: #2ca5e0;
+    background-image: url(../img/contacts/message.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: fixed;
+    z-index: 2;
+    right: 10px;
+    bottom: 10px;
+    transition: scale 0.4s forwards linear;
+}
+
+.call-btn:hover {
+    scale: 1.15;
+}
+
+
+.call-btn:focus~.f1 {
+    visibility: hidden;
+}
+
+.call-btn:focus~.contacts {
+    visibility: visible;
+}
+
+
+.f1 {
+    width: 50px;
+    height: 50px;
+    visibility: visible;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 50%;
+    border: 3px solid #2ca5e0;
+    animation: scale 1s 0.3s linear infinite forwards;
+}
+
+.blur {
+    visibility: hidden;
+    display: block;
+    z-index: 1;
+}
+.call-btn:focus~.blur {
+    visibility: visible;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+
+
+.contact {
+    display: block;
+    border-radius: 15px;
+    border: 1.5px solid #000;
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+    z-index: 5;
+    background-color: #4c4c4c;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+/* telegram */
+.tg {
+    background-image: url('../img/contacts/tg-logo-dark.png');
+}
+
+.tg:hover {
+    background-image: url('../img/contacts/tg-logo-white.png');
+    background-color: #2ca5e0;
+}
+
+
+/* vk */
+.vk {
+    background-image: url("../img/contacts/vk-logo-dark.png")
+}
+
+.vk:hover {
+    background-color: #4a76a8;
+    background-image: url("../img/contacts/vk-logo-white.png")
+}
+
+
+/* odnoklasniky */
+.ok {
+    background-image: url("../img/contacts/ok-logo-dark.png");
+}
+
+.ok:hover {
+    background-image: url("../img/contacts/ok-logo-white.png");
+    background-color: #ff7e00;
+}
+
+
+/* youtube */
+.yt {
+    background-image: url("../img/contacts/yt-logo-dark.png");
+}
+
+.yt:hover {
+    background-image: url("../img/contacts/yt-logo-white.png");
+    background-color: #db0000;
+}
+
+
+/* whatsapp */
+.wa {
+    background-image: url("../img/contacts/wa-logo-dark.png");
+}
+
+.wa:hover {
+    background-image: url("../img/contacts/wa-logo-white.png");
+    background-color: #45e862;
+}
+
+@keyframes scale {
+    0% {
+        scale: 1
+    }
+
+    10% {
+        scale: 1.1;
+    }
+
+    20% {
+        scale: 1.2;
+    }
+
+    30% {
+        scale: 1.3;
+    }
+
+    40% {
+        scale: 1.4;
+    }
+
+    50% {
+        scale: 1.5;
+    }
+
+    60% {
+        scale: 1.6;
+    }
+
+    70% {
+        scale: 1.70;
+        border-color: rgba(77, 121, 143, 0.7);
+    }
+
+    80% {
+        scale: 1.8;
+        border-color: rgba(117, 118, 119, 0.5);
+    }
+
+    90% {
+        scale: 1.9;
+        border-color: rgba(117, 118, 119, 0.2);
+    }
+
+    100% {
+        scale: 2;
+        border-color: rgba(117, 118, 119, 0.1)
+    }
+}
