@@ -4,6 +4,7 @@ import (
 	"encoding/csv"
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 	"os"
 	"sort"
@@ -33,13 +34,12 @@ type Data struct {
 
 func check(err error) {
 	if err != nil {
-		fmt.Printf("ОШИБКА: %v \n", err)
-		os.Exit(1)
+		log.Fatal(fmt.Sprintf("ОШИБКА: %v \n", err))
 	}
 }
 
 func mainPageHandler(w http.ResponseWriter, r *http.Request) {
-	data := GetAllValues()
+	data := AllValues()
 
 	tmpl, err := template.ParseFiles("templates/index.html")
 	check(err)
@@ -131,7 +131,7 @@ func MinMaxPrice(filename string) ([]int, error) {
 	return []int{min, max}, nil
 }
 
-func GetUniqueNumericColumn(filename string, columnIndex int) ([]int, error) {
+func UniqueNumericColumn(filename string, columnIndex int) ([]int, error) {
 	file, err := os.Open(filename)
 	if err != nil {
 		return nil, err
@@ -174,15 +174,15 @@ func GetUniqueNumericColumn(filename string, columnIndex int) ([]int, error) {
 
 	return result, nil
 }
-func GetAllValues() Data {
+func AllValues() Data {
 	result, err := MinMaxPrice("data.csv")
 	check(err)
 
 	products, err := ParseCSV("data.csv")
 	check(err)
-	widths, err := GetUniqueNumericColumn("data.csv", 1)
-	profiles, err := GetUniqueNumericColumn("data.csv", 2)
-	diameters, err := GetUniqueNumericColumn("data.csv", 3)
+	widths, err := UniqueNumericColumn("data.csv", 1)
+	profiles, err := UniqueNumericColumn("data.csv", 2)
+	diameters, err := UniqueNumericColumn("data.csv", 3)
 	data := Data{
 		Products: products,
 		MinPrice: uint16(result[0]),
