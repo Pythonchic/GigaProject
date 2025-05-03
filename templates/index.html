@@ -44,33 +44,37 @@
         <div class="filter-container">
             <h1>Фильтр товаров</h1>
 
-            
+
 
             <!-- Фильтр по сезону -->
             <div class="parameters">
-            <!-- Поле для фильтрации по цене -->
+                <!-- Поле для фильтрации по цене -->
                 <div class="filter-group">
                     <div class="price-filter">
                         <div class="price-header">
                             <span>Фильтр цен</span>
                             <span>₽</span>
                         </div>
-                
+
                         <div class="price-inputs">
                             <div class="price-input">
-                                <input type="number" id="input-min" value="{{.MinPrice}}" min="{{.MinPrice}}" max="{{.MaxPrice}}">
+                                <input type="number" id="input-min" value="{{.MinPrice}}" min="{{.MinPrice}}"
+                                    max="{{.MaxPrice}}">
                             </div>
                             <div class="price-input">
-                                <input type="number" id="input-max" value="{{.MaxPrice}}" min="{{.MinPrice}}" max="{{.MaxPrice}}">
+                                <input type="number" id="input-max" value="{{.MaxPrice}}" min="{{.MinPrice}}"
+                                    max="{{.MaxPrice}}">
                             </div>
                         </div>
-                
+
                         <div class="range-slider">
                             <div class="track" id="track"></div>
-                            <input type="range" min="{{.MinPrice}}" max="{{.MaxPrice}}" value="{{.MinPrice}}" id="lower">
-                            <input type="range" min="{{.MinPrice}}" max="{{.MaxPrice}}" value="{{.MaxPrice}}" id="upper">
+                            <input type="range" min="{{.MinPrice}}" max="{{.MaxPrice}}" value="{{.MinPrice}}"
+                                id="lower">
+                            <input type="range" min="{{.MinPrice}}" max="{{.MaxPrice}}" value="{{.MaxPrice}}"
+                                id="upper">
                         </div>
-                
+
                         <div class="price-limits">
                             <span>{{.MinPrice}} ₽</span>
                             <span>{{.MaxPrice}} ₽</span>
@@ -83,27 +87,27 @@
                             <label>Ширина:</label>
                             <select class="filter" id="width-filter">
                                 <option value="all">Все</option>
-                                <option value="winter">135</option>
-                                <option value="summer">145</option>
-                                <option value="summer">155</option>
+                                {{range .Widths}}
+                                <option value="{{.}}">{{.}}</option>
+                                {{end}}
                             </select>
                         </div>
                         <div class="filter-group">
                             <label>Профиль:</label>
                             <select class="filter" id="profile-filter">
                                 <option value="all">Все</option>
-                                <option value="winter">25</option>
-                                <option value="summer">30</option>
-                                <option value="summer">35</option>
+                                {{range .Profiles}}
+                                <option value="{{.}}">{{.}}</option>
+                                {{end}}
                             </select>
                         </div>
                         <div class="filter-group">
                             <label>Диаметр:</label>
                             <select class="filter" id="diametr-filter">
                                 <option value="all">Все</option>
-                                <option value="winter">12</option>
-                                <option value="summer">13</option>
-                                <option value="summer">14</option>
+                                {{range .Diameters}}
+                                <option value="{{.}}">{{.}}</option>
+                                {{end}}
                             </select>
                         </div>
                     </div>
@@ -127,7 +131,8 @@
         <!-- Контейнер для товаров -->
         <div class="products-container" id="products-list">
             {{range .Products}}
-            <div class="product-card" data-cost="{{.Cost}}" data-season="{{.Season}}">
+            <div class="product-card" data-cost="{{.Cost}}" data-season="{{.Season}}" data-width="{{.Width}}"
+                data-profile="{{.Profile}}" data-diametr="{{.Diametr}}">
                 <div class="img">
                     <img src="{{.Image}}" alt="{{.Name}}">
                 </div>
@@ -140,5 +145,6 @@
     </section>
 </body>
 <script src="/static/scripts/main.js"></script>
-<script src="/static/scripts/filtersuper.js"></script>
+<script src="/static/scripts/filter.js"></script>
+
 </html>

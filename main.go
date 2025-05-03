@@ -28,7 +28,7 @@ type Data struct {
 	MaxPrice uint16
 	Widths   []int
 	Profiles []int
-	Diametrs []int
+	Diameters []int
 }
 
 func check(err error) {
@@ -189,7 +189,7 @@ func GetAllValues() Data {
 		MaxPrice: uint16(result[1]),
 		Widths:   widths,
 		Profiles: profiles,
-		Diametrs: diameters,
+		Diameters: diameters,
 	}
 	return data
 }

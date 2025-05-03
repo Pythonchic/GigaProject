@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Фильтрация товаров
     applyFilterBtn.addEventListener("click", function () {
         const selectedSeason = seasonFilter.value.toLowerCase();
+        const selectedWidth = widthFilter.value.toLowerCase();
+        const selectedProfile = profileFilter.value.toLowerCase();
+        const selectedDiametr = diametrFilter.value.toLowerCase();
+
         let max = parseInt(maxPrice.value);
         let min = parseInt(minPrice.value);
         const minvalue = parseInt(lowerSlider.min);
@@ -27,11 +31,18 @@ document.addEventListener("DOMContentLoaded", function () {
         productCards.forEach(function (card) {
             const cost = parseInt(card.dataset.cost);
             const season = card.dataset.season.toLowerCase();
+            const width = card.dataset.width.toLowerCase();
+            const profile = card.dataset.profile.toLowerCase();
+            const diametr = card.dataset.diametr.toLowerCase();
 
+            
             const priceMatch = cost <= max && cost >= min;
             const seasonMatch = selectedSeason === "all" || season === selectedSeason;
+            const widthMatch = selectedWidth === "all" || width === selectedWidth;
+            const profileMatch = selectedProfile === "all" || profile === selectedProfile;
+            const diametrMatch = selectedDiametr === "all" || diametr === selectedDiametr;
 
-            card.style.display = priceMatch && seasonMatch ? "block": "none";
+            card.style.display = priceMatch && seasonMatch && widthMatch && profileMatch && diametrMatch ? "block": "none";
         });
     });
 
@@ -131,6 +142,9 @@ const track2 = document.getElementById("track2");
 const maxPrice = document.getElementById("input-max");
 const minPrice = document.getElementById("input-min");
 const seasonFilter = document.getElementById("season-filter");
+const widthFilter = document.getElementById("width-filter");
+const profileFilter = document.getElementById("profile-filter");
+const diametrFilter = document.getElementById("diametr-filter");
 const applyFilterBtn = document.getElementById("apply-filter");
 const productCards = document.querySelectorAll(".product-card");
 
