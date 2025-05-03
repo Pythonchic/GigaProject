@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const priceMatch = cost <= max && cost >= min;
             const seasonMatch = selectedSeason === "all" || season === selectedSeason;
 
-            card.style.display = priceMatch && seasonMatch ? "block" : "none";
+            card.style.display = priceMatch && seasonMatch ? "block": "none";
         });
     });
 
