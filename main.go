@@ -12,23 +12,23 @@ import (
 )
 
 type Product struct {
-	Name         string
-	Image        string
-	Cost         int
-	Diametr      string
-	Season       string
-	Seasontr     string
-	Width        string
-	Profile      string
-	Manufacturer string
+	Name             string
+	Image            string
+	Cost             int
+	Diameter         string
+	Season           string
+	SeasonTranslated string
+	Width            string
+	Profile          string
+	Manufacturer     string
 }
 
 type Data struct {
-	Products []Product
-	MinPrice uint16
-	MaxPrice uint16
-	Widths   []int
-	Profiles []int
+	Products  []Product
+	MinPrice  uint16
+	MaxPrice  uint16
+	Widths    []int
+	Profiles  []int
 	Diameters []int
 }
 
@@ -72,15 +72,15 @@ func ParseCSV(filename string) ([]Product, error) {
 		imgpath := fmt.Sprintf("static/img/tires/%s", row[7])
 
 		products = append(products, Product{
-			Name:         row[0],  // название
-			Image:        imgpath, // путь к изображению
-			Cost:         cost,    // цена
-			Diametr:      row[3],  // диаметр (4-й столбец, индекс 3)
-			Season:       season,  // сезон (англ.)
-			Seasontr:     row[4],  // сезон (рус.)
-			Width:        row[1],  // ширина
-			Profile:      row[2],  // профиль
-			Manufacturer: row[5],  // производитель
+			Name:             row[0],  // название
+			Image:            imgpath, // путь к изображению
+			Cost:             cost,    // цена
+			Diameter:         row[3],  // диаметр (4-й столбец, индекс 3)
+			Season:           season,  // сезон (англ.)
+			SeasonTranslated: row[4],  // сезон (рус.)
+			Width:            row[1],  // ширина
+			Profile:          row[2],  // профиль
+			Manufacturer:     row[5],  // производитель
 		})
 	}
 	return products, nil
@@ -184,11 +184,11 @@ func AllValues() Data {
 	profiles, err := UniqueNumericColumn("data.csv", 2)
 	diameters, err := UniqueNumericColumn("data.csv", 3)
 	data := Data{
-		Products: products,
-		MinPrice: uint16(result[0]),
-		MaxPrice: uint16(result[1]),
-		Widths:   widths,
-		Profiles: profiles,
+		Products:  products,
+		MinPrice:  uint16(result[0]),
+		MaxPrice:  uint16(result[1]),
+		Widths:    widths,
+		Profiles:  profiles,
 		Diameters: diameters,
 	}
 	return data

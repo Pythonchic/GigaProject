@@ -132,12 +132,12 @@
         <div class="products-container" id="products-list">
             {{range .Products}}
             <div class="product-card" data-cost="{{.Cost}}" data-season="{{.Season}}" data-width="{{.Width}}"
-                data-profile="{{.Profile}}" data-diametr="{{.Diametr}}">
+                data-profile="{{.Profile}}" data-diametr="{{.Diameter}}">
                 <div class="img">
                     <img src="{{.Image}}" alt="{{.Name}}">
                 </div>
                 <p>{{.Name}}</p>
-                <p>Сезон: {{.Seasontr}}</p>
+                <p>Сезон: {{.SeasonTranslated}}</p>
                 <p class="price-product">{{.Cost}} ₽/шт</p>
             </div>
             {{end}}
